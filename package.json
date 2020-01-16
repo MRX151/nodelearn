@@ -1,0 +1,28 @@
+{
+  "name": "nodelearn",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRX151/nodelearn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MRX151/nodelearn/issues"
+  },
+  "homepage": "https://github.com/MRX151/nodelearn#readme",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
