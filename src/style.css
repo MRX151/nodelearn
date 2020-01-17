@@ -1,0 +1,13 @@
+/* @font-face{
+  font-family: 'Myfont';
+  src: url('./毛笔书法字体\(启功体\)繁启体.ttf');
+  font-weight: 600;
+  font-style: normal
+} */
+
+
+.hello {
+  color:red;
+  background: url(./icon_yifabu.png);
+  /* font-family: 'Myfont' */
+}
