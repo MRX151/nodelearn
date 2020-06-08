@@ -11,10 +11,10 @@ const FILE_PATH_JS = "f:/test/js.file";
 
 // sha256和base64编码测试
 let sha256Text = "测试串1--no-color test --machine --plain-name 加密操作 test/dartPlayground/myplayground/security/cryptography.dart";
-// 被编码后的base64
-let base64Sha256Text = "pWa6IrDvaEbSLbpPY04/HLHU90tEo4Ky9jHA8nADDLo=";
+let secret = "p@ssw0rd";
+let timestamp = "1591416858001";
 
-describe.only('sha256和base64',()=>{
+describe('sha256和base64',()=>{
 
     // 内存编码
     it.skip('u8b6测试',()=>{
@@ -54,26 +54,16 @@ describe.only('sha256和base64',()=>{
       let result = su.en_sha256b6(sha256Text)
       fs.writeFileSync(FILE_PATH_JS,result)
     })
+    
+})
+
+describe.only('aes加密',()=>{
 
     // aes加密探索
     it('探索:aesGsm加密',()=>{
-      
-    })
-
-
-
-    it.skip('基础测试',()=>{
-
-        // const mdHash = crypto.MD5('message').toString(crypto.enc.Base64)
-        const mdHash = crypto.MD5('一段文字').toString(crypto.enc.Base64)
-
-        console.log('md5',mdHash)
-
-        const hash = crypto.SHA256('sha256').toString(crypto.enc.Base64)
-        console.log('sha256',hash)
-
-        
-
-    })
-    
+      let es = su.en_aesGsm(sha256Text,secret,timestamp)
+      fs.writeFileSync(FILE_PATH_JS,es)
+      let ds = su.de_aesGsm(es,secret,timestamp)
+      assert.strictEqual(ds,sha256Text)
+    })  
 })
