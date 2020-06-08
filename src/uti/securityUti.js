@@ -29,10 +29,14 @@ function en_sha256b6(content){
 function en_aesGsm(content,secret,timestamp){
   const srcs = crypto.enc.Utf8.parse(content)
   let u8key = crypto.enc.Utf8.parse(key)
-  key = crypto.SHA256(u8key)
-  
+  let sha256key = crypto.SHA256(u8key)
+  let u8Nonce = crypto.enc.Utf8.parse(timestamp)
+  let sha256Nonce = crypto.SHA256(u8Nonce)
 
-  crypto.AES.decrypt()
+  let es = crypto.AES.encrypt(srcs,sha256key,{
+    iv : sha256Nonce,
+    mode :crypto.mode.ECB
+  })
 }
 
 export default{
