@@ -65,5 +65,15 @@ describe.only('aes加密',()=>{
       fs.writeFileSync(FILE_PATH_JS,es)
       let ds = su.de_aesGsm(es,secret,timestamp)
       assert.strictEqual(ds,sha256Text)
-    })  
+    })
+    
+    it('验证dart/java解密加密',()=>{
+      let es = fs.readFileSync(FILE_PATH_DART,'utf-8')
+      let ds = su.de_aesGsm(es,secret,timestamp)
+      assert.strictEqual(ds,sha256Text)
+
+      let e2 = fs.readFileSync(FILE_PATH_JAVA,'utf-8')
+      let d2 = su.de_aesGsm(e2,secret,timestamp)
+      assert.strictEqual(d2,sha256Text)
+    })
 })
